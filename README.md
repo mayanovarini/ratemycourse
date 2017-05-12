@@ -21,7 +21,7 @@ You need to sign up and then log in using your CCSF email address.
 11. Reading materials (optional)
 12. Rating in stars (0-5)
 
-<b>To review a course that already in our database</b>, the following information is needed :
+<b>To review a course that is already in our database</b>, the following information is needed :
 1. Tutors (separated by commas)
 2. Semester in which the course is taken (pick one off the dropdown menu)
 3. Title of your review (informative and specific)
