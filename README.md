@@ -5,6 +5,7 @@ Rate my course app, built using Ruby on Rails, Javascript, Bootstrap and the rec
 If you're a registered student, you can submit your review for CCSF (City College of San Francisco) courses.
 
 You need to sign up and then log in using your CCSF email address.
+
 <b>To submit a review for a course that does not yet exist</b>, the following information is needed :
 
 1. Course code (ex. CS177)
