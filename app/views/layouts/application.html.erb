@@ -5,17 +5,12 @@
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= render 'layouts/bootstrap' %>
   </head>
 
   <body>
-    <a href="/pages/about">About Us</a>
-    <a href="/pages/career">Career</a>
-    <a href="/pages/press">Press</a>
-    <a href="/pages/tos">Terms of Service</a>
-    <a href="/pages/content">Content Guidelines</a>
-    <a href="/pages/privacy">Privacy Policy</a>
-    <a href="/pages/contact">Contact Us</a>
+    <%= render 'layouts/navbar' %>
     <%= yield %>
-    <p>&copy; Rate My Course</p>
+    <%= render 'layouts/footer' %>
   </body>
 </html>
