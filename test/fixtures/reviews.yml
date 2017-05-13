@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tutor: MyText
+  semester: MyString
+  year: 2017-05-12
+  title: MyText
+  credit: MyString
+  mandatory: MyString
+  online: MyString
+  review: MyText
+  reading1: MyString
+  reading2: MyString
+  reading3: MyString
+  reading4: MyString
+  rating: 1
+
+two:
+  tutor: MyText
+  semester: MyString
+  year: 2017-05-12
+  title: MyText
+  credit: MyString
+  mandatory: MyString
+  online: MyString
+  review: MyText
+  reading1: MyString
+  reading2: MyString
+  reading3: MyString
+  reading4: MyString
+  rating: 1

@@ -1,0 +1,65 @@
+<div class="container">
+  <%= form_with(model: review, local: true) do |form| %>
+    <% if review.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(review.errors.count, "error") %> prohibited this review from being saved:</h2>
+
+        <ul>
+        <% review.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= form.select :desired_attribute, options_for_select([['Fall'], ['Summer'], ['Spring']]) %>
+      <%= form.date_select :year, :order => [:year], :start_year => 1935, :end_year => Time.now.year, :prompt => {:year => "Select year"} %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :tutor %>
+      <%= form.text_area :tutor, id: :review_tutor, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :title %>
+      <%= form.text_area :title, id: :review_title, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+
+      <%= form.text_field :credit, id: :review_credit, value: "Credited", class: "btn btn-success" %>
+
+      <%= form.text_field :mandatory, id: :review_mandatory, value: "Mandatory", class: "btn btn-info" %>
+
+      <%= form.text_field :online, id: :review_online, value: "In-Person", class: "btn btn-warning" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :review %>
+      <%= form.text_area :review, id: :review_review, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :Reading_Material %>
+      <em>(Optional)</em><br />
+      <%= form.text_field :reading1, id: :review_reading1, class: "form-control", placeholder: "https://readingsource.com" %>
+      <br />
+      <%= form.text_field :reading2, id: :review_reading2, class: "form-control", placeholder: "https://readingsource.com" %>
+      <br />
+      <%= form.text_field :reading3, id: :review_reading3, class: "form-control", placeholder: "https://readingsource.com" %>
+      <br />
+      <%= form.text_field :reading4, id: :review_reading4, class: "form-control", placeholder: "https://readingsource.com" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :rating %>
+      <%= form.number_field :rating, id: :review_rating, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.submit class: "btn btn-primary"%>
+    </div>
+  <% end %>
+</div>
