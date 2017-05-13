@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <div class="container">
   <div class ="jumbotron">
     <div class="row">
@@ -20,15 +18,14 @@
 <table>
   <% @courses.each do |course| %>
     <tr>
-      <td><%= course.code %></td>
+      <td><%= link_to course.code, course %></td>
     </tr>
     <tr>
-      <td><%= course.name %></td>
+      <td><%= link_to course.name, course %></td>
     </tr>
     <tr>
-      <td><%= course.department %>Department</td>
+      <td><%= course.department %> Department</td>
     </tr>
-        <tr><%= link_to 'Show', course %></tr>
         <tr><%= link_to 'Edit', edit_course_path(course) %></tr>
         <tr><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></tr>
         <tr>City College of San Francisco</tr>
