@@ -1,19 +1,53 @@
 <div class="container">
-  <p>
-    <strong>Code:</strong>
-    <%= @course.code %>
-  </p>
+  <div class="jumbotron">
+    <div class="row">
+      <div class="col-md-7">
+        <h2>Rate this course</h2>
+        <hr>
+        <p style="font-size: 2.5em"><%= @course.code %></p>
 
-  <p>
-    <strong>Name:</strong>
-    <%= @course.name %>
-  </p>
+        <p style="color: grey">
+          <strong><%= @course.name %></strong>
+        </p>
 
-  <p>
-    <strong>Department:</strong>
-    <%= @course.department %>
-  </p>
+        <p>
+          <%= @course.department %>
+        </p>
 
-  <%= link_to 'Edit', edit_course_path(@course), class: "btn btn-primary active" %> 
+        <h3><strong>City College of San Francisco</strong></h3>
+      </div>
+      <div class="col-md-5">
+        <h2>Dos</h2>
+          <h5>Make sure the course code is correct</h5>
+          <h5>Be descriptive and respectful in your review</h5>
+          <h5>Discuss how the course is conducted by the tutor(s)</h5>
+          <h5>Discuss the course impact on your learning</h5>
+
+        <h2>Don'ts</h2>
+          <h5>Use profanity, name calling, derogatory terms</h5>
+          <h5>Post a review of a course you never took</h5>
+      </div>
+    </div>
+  </div>
+
+  <%= link_to "Write Review", new_course_review_path(@course), class: "btn btn-primary" %>
+  <div class="col-md-9">
+      <% if @reviews.blank? %>
+        <h3>No reviews yet. Be the first to write one!</h3>
+      <% else %>
+        <% @reviews.each do |review| %>
+          <p><%= review.semester %></p>
+          <p><%= review.tutor %></p>
+          <p><%= review.credit %></p>
+          <p><%= review.mandatory %></p>
+          <p><%= review.online %></p>
+          <p><%= review.title %></p>
+          <p><%= review.review %></p>
+          <p><%= review.reading1 %></p>
+        <% end %>
+      <% end %>
+    </div>
+
+  <%= link_to 'Edit', edit_course_path(@course), class: "btn btn-primary active" %>
   <%= link_to 'Back', courses_path, class: "btn btn-default" %>
 </div>

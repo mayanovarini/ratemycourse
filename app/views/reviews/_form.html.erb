@@ -1,5 +1,5 @@
 <div class="container">
-  <%= form_with(model: review, local: true) do |form| %>
+  <%= form_with(model: [@course, @review], local: true) do |form| %>
     <% if review.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(review.errors.count, "error") %> prohibited this review from being saved:</h2>
@@ -28,7 +28,7 @@
     </div>
 
     <div class="form-group">
-            
+
       <%= form.text_field :credit, id: :review_credit, value: "Credited", class: "btn btn-success" %>
 
       <%= form.text_field :mandatory, id: :review_mandatory, value: "Mandatory", class: "btn btn-info" %>
