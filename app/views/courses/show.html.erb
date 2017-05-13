@@ -30,7 +30,7 @@
     </div>
   </div>
 
-  <%= link_to "Write Review", new_course_review_path(@course), class: "btn btn-primary" %>
+  <%= link_to "Write Review", new_course_review_path(@course), class: "btn btn-primary active" %>
   <div class="col-md-9">
       <% if @reviews.blank? %>
         <h3>No reviews yet. Be the first to write one!</h3>
@@ -48,6 +48,6 @@
       <% end %>
     </div>
 
-  <%= link_to 'Edit', edit_course_path(@course), class: "btn btn-primary active" %>
+  <%= link_to 'Edit', edit_course_path(@course), class: "btn btn-primary " %>
   <%= link_to 'Back', courses_path, class: "btn btn-default" %>
 </div>
