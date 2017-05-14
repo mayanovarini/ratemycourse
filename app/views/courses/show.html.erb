@@ -39,15 +39,16 @@
           <% @reviews.each do |review| %>
             <div class="star-rating" data-score= <%= review.rating %> ></div>
 
-            <p><%= review.semester %></p>
-            <p>Tutor(s): <%= review.tutor %></p>
-            <p><%= review.credit %></p>
-            <p><%= review.mandatory %></p>
-            <p><%= review.online %></p>
             <p><%= review.title %></p>
-            <p><%= h(review.review).gsub(/\n/, '<br/>').html_safe %></p>
+            <p>Tutor(s): <%= review.tutor %></p>
+            <p><%= review.semester %><%= review.year %><%= review.credit %><%= review.mandatory %><%= review.online %></p>
             <p><%#= review.review %></p>
-            <a href="<%= review.reading1 %><%= review.reading2 %>">Reading Material</a>
+            <a href="<%= review.reading1 %><%= review.reading2 %><%= review.reading3 %><%= review.reading4 %>" target="_blank">Reading Material</a>
+            <p><%= h(review.review).gsub(/\n/, '<br/>').html_safe %></p>
+            <p>
+              Posted by : <%= "#{review.user.first_name.capitalize} #{review.user.last_name.capitalize[0]}." %>
+              Created at : <%= review.created_at.strftime("%B %d, %Y") %>
+            </p>
           <% end %>
         <% end %>
     </div>

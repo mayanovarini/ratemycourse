@@ -28,7 +28,7 @@
       <td><%= course.department %> Department</td>
     </tr>
     <div class="star-rating" data-score= <%= course.avg_rating %> ></div>
-
+    
         <tr><%= link_to 'Edit', edit_course_path(course) %></tr>
         <tr><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></tr>
         <tr>City College of San Francisco</tr>
