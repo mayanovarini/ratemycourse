@@ -6,7 +6,7 @@
         <h3>From City College of San Francisco</h3><br />
           <%= form_with(model: course, local: true) do |form| %>
             <% if course.errors.any? %>
-              <div id="error_explanation">
+              <div id="error_explanation" class= "alert alert-danger alert-dismissable">
                 <h2><%= pluralize(course.errors.count, "error") %> prohibited this course from being saved:</h2>
 
                 <ul>

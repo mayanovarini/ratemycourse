@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   validates_format_of :email, with: /\@mail.ccsf\.edu/, message: ': You can only use a student email address from CCSF'
+  validates :first_name, :last_name, presence: true 
+
   has_many :reviews, dependent: :destroy
   has_many :courses
 end
