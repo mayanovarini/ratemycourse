@@ -43,7 +43,7 @@
             <p>Tutor(s): <%= review.tutor %></p>
             <p><%= review.semester %><%= review.year %><%= review.credit %><%= review.mandatory %><%= review.online %></p>
             <p><%#= review.review %></p>
-            <a href="<%= review.reading1 %><%= review.reading2 %><%= review.reading3 %><%= review.reading4 %>" target="_blank">Reading Material</a>
+            <a href="<%= review.reading1 %>" onclick="window.open('<%= review.reading2 %>'); window.open('<%= review.reading3 %>'); window.open('<%= review.reading4 %>'); ">Click Here</a>
             <p><%= h(review.review).gsub(/\n/, '<br/>').html_safe %></p>
             <p>
               Posted by : <%= "#{review.user.first_name.capitalize} #{review.user.last_name.capitalize[0]}." %>
