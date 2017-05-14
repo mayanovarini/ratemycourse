@@ -6,4 +6,5 @@ class User < ApplicationRecord
 
   validates_format_of :email, with: /\@mail.ccsf\.edu/, message: ': You can only use a student email address from CCSF'
   has_many :reviews, dependent: :destroy
+  has_many :courses
 end

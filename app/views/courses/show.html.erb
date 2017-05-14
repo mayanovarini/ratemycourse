@@ -14,6 +14,9 @@
         </p>
 
         <h3><strong>City College of San Francisco</strong></h3>
+        <div class="star-rating" data-score= <%= @avg_rating %> ></div>
+        <p>(<%= "#{@reviews.length} reviews" %>)</p>
+
       </div>
       <div class="col-md-5" style="position: absolute; bottom: 30px; right:20px;">
       <%= link_to "Rate This Course", new_course_review_path(@course), class: "btn btn-primary btn-lg pull-right active"%>
@@ -34,15 +37,29 @@
           <h2 class="bar"><span style="text-align: center; font-size: 26px;">Recent Reviews</span></h2>
         </div>
           <% @reviews.each do |review| %>
+            <div class="star-rating" data-score= <%= review.rating %> ></div>
+
             <p><%= review.semester %></p>
-            <p><%= review.tutor %></p>
+            <p>Tutor(s): <%= review.tutor %></p>
             <p><%= review.credit %></p>
             <p><%= review.mandatory %></p>
             <p><%= review.online %></p>
             <p><%= review.title %></p>
-            <p><%= review.review %></p>
+            <p><%= h(review.review).gsub(/\n/, '<br/>').html_safe %></p>
+            <p><%#= review.review %></p>
             <a href="<%= review.reading1 %><%= review.reading2 %>">Reading Material</a>
           <% end %>
         <% end %>
     </div>
+
+
+    <script>
+    $('.star-rating').raty({
+      path: 'https://s3-us-west-1.amazonaws.com/ratemycourse/starss',
+      readOnly: true,
+      score: function() {
+        return $(this).attr('data-score');
+      }
+    });
+  </script>
 </div>

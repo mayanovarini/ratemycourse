@@ -11,13 +11,17 @@ class CoursesController < ApplicationController
   # GET /courses/1
   # GET /courses/1.json
   def show
-    @reviews = Review.where(course_id: @course.id)
+    @reviews = Review.where(course_id: @course.id).order("created_at DESC")
+    if @reviews.blank?
+      @avg_rating = 0
+    else
+      @avg_rating = @reviews.average(:rating).round(2)
+    end
   end
 
   # GET /courses/new
   def new
     @course = Course.new
-    @review = Review.new
   end
 
   # GET /courses/1/edit
@@ -28,7 +32,7 @@ class CoursesController < ApplicationController
   # POST /courses.json
   def create
     @course = Course.new(course_params)
-
+    @course.user_id = current_user.id
 
     respond_to do |format|
       if @course.save

@@ -12,6 +12,8 @@
       </div>
     <% end %>
 
+<div class="row">
+  <div class="col-xs-6">
     <div class="form-group">
       <%= form.select :desired_attribute, options_for_select([['Fall'], ['Summer'], ['Spring']]) %>
       <%= form.date_select :year, :order => [:year], :start_year => 1935, :end_year => Time.now.year, :prompt => {:year => "Select year"} %>
@@ -26,15 +28,24 @@
       <%= form.label :title %>
       <%= form.text_area :title, id: :review_title, class: "form-control" %>
     </div>
+  </div>
 
+  <div class="col-xs-6">
     <div class="form-group">
 
       <%= form.text_field :credit, id: :review_credit, value: "Credited", class: "btn btn-success" %>
 
-      <%= form.text_field :mandatory, id: :review_mandatory, value: "Mandatory", class: "btn btn-info" %>
+      <%= form.text_field :mandatory, id: :review_mandatory, value: "Mandatory Attendance", class: "btn btn-info" %>
 
       <%= form.text_field :online, id: :review_online, value: "In-Person", class: "btn btn-warning" %>
     </div>
+    <div class="form-group">
+      <%= form.label :rating %>
+      <div id="star-rating"></div>
+      <%= form.number_field :rating, id: :review_rating, class: "form-control" %>
+    </div>
+  </div>
+</div>
 
     <div class="form-group">
       <%= form.label :review %>
@@ -53,10 +64,7 @@
       <%= form.text_field :reading4, id: :review_reading4, class: "form-control", placeholder: "https://readingsource.com" %>
     </div>
 
-    <div class="form-group">
-      <%= form.label :rating %>
-      <%= form.number_field :rating, id: :review_rating, class: "form-control" %>
-    </div>
+
 
     <div class="form-group">
       <%= form.submit class: "btn btn-primary"%>
@@ -64,3 +72,10 @@
 
   <% end %>
 </div>
+
+  <script>
+    $('#star-rating').raty({
+      path: 'https://s3-us-west-1.amazonaws.com/ratemycourse/stars',
+      scoreName: 'review[rating]'
+    });
+  </script>

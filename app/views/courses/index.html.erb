@@ -27,6 +27,8 @@
     <tr>
       <td><%= course.department %> Department</td>
     </tr>
+    <div class="star-rating" data-score= <%= course.avg_rating %> ></div>
+
         <tr><%= link_to 'Edit', edit_course_path(course) %></tr>
         <tr><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></tr>
         <tr>City College of San Francisco</tr>
@@ -43,3 +45,13 @@
 
 <%= link_to 'New Course', new_course_path %>
 </div>
+
+<script>
+  $('.star-rating').raty({
+    path: 'https://s3-us-west-1.amazonaws.com/ratemycourse/stars',
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    }
+  });
+</script>

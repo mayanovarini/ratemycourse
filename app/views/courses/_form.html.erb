@@ -2,7 +2,8 @@
   <div class="jumbotron">
     <div class="row">
       <div class="col-md-7">
-        <h2>Post a course and rate it</h2>
+        <h2>Post a course</h2>
+        <h3>From City College of San Francisco</h3><br />
           <%= form_with(model: course, local: true) do |form| %>
             <% if course.errors.any? %>
               <div id="error_explanation">
@@ -17,40 +18,33 @@
             <% end %>
 
             <div class="form-group">
-              <%= form.label :code %>
-              <%= form.text_field :code, id: :course_code, class: "form-control" %>
-            </div>
+              <%= form.text_field :code, id: :course_code, class: "form-control", :style => "background: transparent; border: none; font-size: 2em", :placeholder => "Course Code" %>
+            </div><br />
 
             <div class="form-group">
-              <%= form.label :name %>
-              <%= form.text_field :name, id: :course_name, class: "form-control" %>
-            </div>
+              <%= form.text_field :name, id: :course_name, class: "form-control", :style => "background: transparent; border: none; font-size: 2em", :placeholder => "Course Name"%>
+            </div><br />
 
             <div class="form-group">
-              <%= form.label :department %>
-              <%= form.text_field :department, id: :course_department, class: "form-control" %>
-            </div>
-            <h3><strong>City College of San Francisco</strong></h3>
-
-            <div class="form-group">
-              <%= form.submit class: "btn btn-primary" %>
+              <%= form.text_field :department, id: :course_department, class: "form-control", :style => "background: transparent; border: none; font-size: 2em", :placeholder => "Department Name"%>
+            </div><br />
+          </div>
+          <div class="col-md-5">
+            <div class="form-group" style="position: absolute; bottom: 20px; right:20px;">
+              <%= form.submit class: "btn btn-primary", value: "Create Course"  %>
               <%= link_to 'Back', courses_path(@course), class: "btn btn-default" %>
             </div>
           <% end %>
-      </div>
-      <div class="col-md-5">
+
         <h2>Dos</h2>
           <h5>Make sure the course code is correct</h5>
-          <h5>Be descriptive and respectful in your review</h5>
-          <h5>Discuss how the course is conducted by the tutor(s)</h5>
-          <h5>Discuss the course impact on your learning</h5>
+          <h5>Make sure the course name is correct</h5>
+          <h5>Make sure the department name is correct</h5>
 
         <h2>Don'ts</h2>
           <h5>Use profanity, name calling, derogatory terms</h5>
-          <h5>Post a review of a course you never took</h5>
+          <h5>Post a course you never took</h5>
       </div>
     </div>
   </div>
-
-
 </div>
