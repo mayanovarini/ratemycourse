@@ -11,7 +11,7 @@ You need to sign up and then log in using your CCSF email address.
 1. Course code (ex. CS177)
 2. Course name (ex. Software Engineering)
 3. Department name (ex. Computer Science)
-4. Tutors (separated by commas)
+4. Tutors (separated by commas). Course creator will have their tutor on the course banner. 
 5. Semester in which the course is taken (pick one off the dropdown menu)
 6. Title of your review (informative and specific)
 7. Non-credit / credit
@@ -19,7 +19,7 @@ You need to sign up and then log in using your CCSF email address.
 9. Online / in person class
 10. Review details
 11. Reading materials (optional)
-12. Rating in stars (0-5)
+12. Rating on a scale (1-10)
 
 <b>To review a course that is already in our database</b>, the following information is needed :
 1. Tutors (separated by commas)
@@ -30,7 +30,7 @@ You need to sign up and then log in using your CCSF email address.
 6. Online / in person class
 7. Review details
 8. Reading materials (optional)
-9. Rating in stars (0-5)
+9. Rating on a scale (1-10)
 
 The homepage will show the search bar from which you can find a course using the Department Name and the Course Code. Following the search feature is the popular course reviews.
 
