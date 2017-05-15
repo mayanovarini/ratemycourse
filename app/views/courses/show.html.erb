@@ -23,7 +23,7 @@ function open_reading(url1, url2, url3, url4) {
         <span style="font-size: 15px; "><%= link_to 'Edit', edit_course_path(@course) %></span>
         <span style="font-size: 15px; "><%= link_to 'Destroy', @course, method: :delete, data: { confirm: 'Are you sure?' } %></span></p>
 
-        <p style="color: grey">
+        <p style="color: grey; font-size: 25px;">
           <strong><%= @course.name %></strong>
         </p>
 
@@ -32,11 +32,11 @@ function open_reading(url1, url2, url3, url4) {
         </p>
 
         <h3 style="color:#801714"><strong>City College of San Francisco</strong></h3>
-        <h4 style="color: #f19c1c">Rating : <%= @course.avg_rating %> out of 10 <%= "( total #{@reviews.length} reviews )" %></h4>
+        <h4 style="color: #f1a82b">Rating : <%= @course.avg_rating %> out of 10 <%= "( total #{@reviews.length} reviews )" %></h4>
 
       </div>
       <div class="col-md-5" style="position: absolute; bottom: 30px; right:20px;">
-      <%= link_to "Rate This Course", new_course_review_path(@course), class: "btn btn-warning btn-lg pull-right active"%>
+      <%= link_to "Rate This Course", new_course_review_path(@course), class: "btn btn-success btn-lg pull-right active"%>
       </div>
 
     </div>
@@ -57,7 +57,7 @@ function open_reading(url1, url2, url3, url4) {
               <h3><%= review.title %></h3>
             </div>
             <div class="col-md-4" style="text-align: right">
-              <h4 style="color: #f19c1c; padding-top: 15px;"><strong>Rating : <%= review.rating %> out of 10</strong></h4>
+              <h4 style="color: #f1a82b; padding-top: 15px;"><strong>Rating : <%= review.rating %> out of 10</strong></h4>
             </div>
           </div>
           <h5 style="color:#6a8b99">Tutor(s): <%= review.tutor %></h5>

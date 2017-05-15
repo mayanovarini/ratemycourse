@@ -1,15 +1,22 @@
-<h2 class="bar"><span style="text-align: center; font-size: 26px;">Search Result</span></h2>
-
-<% @courses.each do |course| %>
-<div style="margin-top: 25px; background: white; padding: 20px;">
-<div class="row">
-  <div class="col-md-4">
-    <%= link_to course.code, course %>
-    <%= link_to course.name, course %>
-    <%= course.department %> Department
-    <% if user_signed_in? && current_user %>
-      <%= link_to 'Edit', edit_course_path(course) %>
-      <%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %>
-      <h4>City College of San Francisco</h4>
-    <% end %>
-  </div>
+<div class="container">
+  <h2 class="bar"><span style="text-align: center; font-size: 26px;">Search Result</span></h2>
+  <% if @courses.length == 0 %>
+    <div style="font-size: 1.5em;">
+      No results
+    </div>
+  <% end %>
+  <% @courses.each do |course| %>
+  <div style="margin-top: 25px; background: white; padding: 20px;">
+  <div class="row">
+    <div class="col-md-4">
+      <%= link_to course.code, course %>
+      <%= link_to course.name, course %>
+      <%= course.department %> Department
+      <% if user_signed_in? && current_user %>
+        <%= link_to 'Edit', edit_course_path(course) %>
+        <%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <h4>City College of San Francisco</h4>
+      <% end %>
+    </div>
+  <% end %>
+</div>

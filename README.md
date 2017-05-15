@@ -11,7 +11,7 @@ You need to sign up and then log in using your CCSF email address.
 1. Course code (ex. CS177)
 2. Course name (ex. Software Engineering)
 3. Department name (ex. Computer Science)
-4. Tutors (separated by commas). Course creator will have their tutor on the course banner. 
+4. Tutors (separated by commas)
 5. Semester in which the course is taken (pick one off the dropdown menu)
 6. Title of your review (informative and specific)
 7. Non-credit / credit

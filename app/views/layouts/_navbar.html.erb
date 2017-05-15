@@ -3,13 +3,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <a class="homelink" href="<%= root_path %>"></a>
       <div class="navcontent">
-        <%= form_tag search_courses_path, method: :get, class: "navbar-form navbar-left" do %>
-          <p>
-            <%= text_field_tag :search, params[:search], class: "form-control" %>
-            <%= submit_tag "Search", name: nil, class: "btn btn-default" %>
-          </p>
-        <% end %>
-        <ul class="nav navbar-nav navbar-right">
+        <ul class="nav navbar-nav navbar-right" style="font-size:15px">
           <% if user_signed_in? %>
             <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
             <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>

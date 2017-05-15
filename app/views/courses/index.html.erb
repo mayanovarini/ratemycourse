@@ -2,21 +2,22 @@
   <div class ="jumbotron" style="padding-top: 80px;">
     <div class="row">
       <div class="col-xs-6">
-        <h1 style="font-size: 36px; margin: 0">I want to rate my course for</h1>
+        <h1 style="font-size: 37px; margin: 0">I want to rate my course for</h1>
       </div>
-      <div class="col-xs-4" style="padding-top: 4px;">
-        <input type="text" style="font-size: 18px;" class="form-control" placeholder="Department Name">
-      </div>
-      <div class="col-xs-2" style="padding-top: 4px;">
-        <input type="text" style="font-size: 18px;" class="form-control" placeholder="Course Code">
+      <%= form_tag search_courses_path, method: :get, class: "navbar-form navbar-left" do %>
+      <div class="col-xs-6">
+        <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Department Name / Course Code", style: "font-size: 18px", :size=>"40" %>
       </div>
     </div>
+
     <div style="text-align: center; margin-top: 60px;">
-      <button type="submit" class="btn btn-primary btn-lg">Search</button>&nbsp;&nbsp;&nbsp;
+      <%= submit_tag "Search", name: nil, class: "btn btn-primary btn-lg" %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <% if user_signed_in? %>
         <%= link_to 'Post Course', new_course_path, class: "btn btn-warning btn-lg" %>
       <% end %>
     </div>
+    <% end %>
+
 
   </div>
 
@@ -26,21 +27,35 @@
   <div style="margin-top: 25px; background: white; padding: 20px;">
   <div class="row">
     <div class="col-md-4">
-      <%= link_to course.code, course %>
-      <%= link_to course.name, course %>
-      <%= course.department %> Department
-      <% if user_signed_in? && current_user %>
-        <%= link_to 'Edit', edit_course_path(course) %>
-        <%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %>
-        <h4>City College of San Francisco</h4>
-      <% end %>
+      <h3 style="font-size: 2.5em; font-weight: bold;"><%= link_to course.code, course %>
+        <% if user_signed_in? && course.user == current_user %>
+          <span style="font-size: 15px; "><%= link_to 'Edit', edit_course_path(course) %></span>
+          <span style="font-size: 15px; "><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></span>
+        <% end %>
+      </h3>
+
+      <p style="color: grey; font-size: 1.2em">
+        <strong><%= link_to course.name, course %></strong>
+      </p>
+
+      <p style="font-size: 1.2em">
+        <%= course.department %> Department
+      </p>
+
+      <h3 style="color:#801714"><strong>City College of San Francisco</strong></h3>
+      <h4 style="color: #f1a82b">Average Rating : <%= course.avg_rating %> / 10 </h4>
+      <div style="margin-top: 30px">
+        <%= link_to "Rate This Course", new_course_review_path(course), class: "btn btn-success"%>
+      </div>
+
     </div>
+
     <div class="col-md-8">
       <% review = course.reviews.order('id DESC').limit(1).first %>
       <% if review == nil %>
-        NO REVIEW
+        <h3 style="color: gray">No review.<br /><br /> Be the first one to rate this course!</h3>
       <% else %>
-        <div style="background-color: white; margin: 20px 0 0 0; padding: 0;">
+        <div style="background-color: white">
           <div class="row">
             <div class="col-md-8">
               <h3><%= review.title %></h3>

@@ -2,7 +2,7 @@
   <div class="jumbotron">
     <div class="row">
       <div class="col-md-7">
-        <h2 style="border-bottom: 1px solid gray; margin-top: 0; padding-bottom: 23px; font-weight: bold; color:gray;">Rate this course</h2>
+        <h2 style="border-bottom: 1px solid gray; margin-top: 0; padding-bottom: 23px; font-weight: bold; color:#1d7312;">Rate this course</h2>
         <hr>
         <p style="font-size: 2.5em; margin-bottom: 23px; font-weight: bold"><%= @course.code %></p>
 
@@ -15,7 +15,8 @@
         </p>
 
         <h3 style="color:#801714"><strong>City College of San Francisco</strong></h3>
-        
+        <h4 style="color: #f1a82b">Average Rating : <%= @course.avg_rating %> / 10 </h4>
+
       </div>
       <div class="col-md-5" style="border-left: 1px solid gray; padding-left: 30px;">
         <h2>Dos</h2>

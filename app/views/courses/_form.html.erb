@@ -2,8 +2,8 @@
   <div class="jumbotron">
     <div class="row">
       <div class="col-md-7">
-        <h2>Post a course</h2>
-        <h3>From City College of San Francisco</h3><br />
+        <h2 style="font-weight: bold; color:#1d7312;">Post a course</h2>
+        <h3>From<span style="color:#801714"> City College of San Francisco</span></h3><br />
           <%= form_with(model: course, local: true) do |form| %>
             <% if course.errors.any? %>
               <div id="error_explanation" class="alert alert-danger" role="alert">
@@ -31,8 +31,8 @@
           </div>
           <div class="col-md-5">
             <div class="form-group" style="position: absolute; bottom: 20px; right:20px;">
-              <%= form.submit class: "btn btn-primary", value: "Post Course" %>
-              <%= link_to 'Back', courses_path(@course), class: "btn btn-default" %>
+              <%= form.submit class: "btn btn-lg btn-warning", value: "Post Course" %>
+              <%= link_to 'Back', courses_path(@course), class: "btn btn-lg btn-default" %>
             </div>
           <% end %>
 
