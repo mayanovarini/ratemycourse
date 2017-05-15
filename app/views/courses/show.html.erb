@@ -1,9 +1,27 @@
+<script>
+function open_reading(url1, url2, url3, url4) {
+  if (url1) {
+    window.open(url1, '_blank');
+  }
+  if (url2) {
+    window.open(url2, '_blank');
+  }
+  if (url3) {
+    window.open(url3, '_blank');
+  }
+  if (url4) {
+    window.open(url4, '_blank');
+  }
+}
+</script>
+
 <div class="container">
   <div class="jumbotron" style="position: relative;">
     <div class="row">
       <div class="col-md-7">
         <p style="font-size: 2.5em; font-weight: bold;"><%= @course.code %>
-        <span style="font-size: 15px; "><%= link_to 'Edit', edit_course_path(@course) %></span></p>
+        <span style="font-size: 15px; "><%= link_to 'Edit', edit_course_path(@course) %></span>
+        <span style="font-size: 15px; "><%= link_to 'Destroy', @course, method: :delete, data: { confirm: 'Are you sure?' } %></span></p>
 
         <p style="color: grey">
           <strong><%= @course.name %></strong>
@@ -13,13 +31,12 @@
           <%= @course.department %>
         </p>
 
-        <h3><strong>City College of San Francisco</strong></h3>
-        <div class="star-rating" data-score= <%= @avg_rating %> ></div>
-        <p>(<%= "#{@reviews.length} reviews" %>)</p>
+        <h3 style="color:#801714"><strong>City College of San Francisco</strong></h3>
+        <h4 style="color: #f19c1c">Rating : <%= @course.avg_rating %> out of 10 <%= "( total #{@reviews.length} reviews )" %></h4>
 
       </div>
       <div class="col-md-5" style="position: absolute; bottom: 30px; right:20px;">
-      <%= link_to "Rate This Course", new_course_review_path(@course), class: "btn btn-primary btn-lg pull-right active"%>
+      <%= link_to "Rate This Course", new_course_review_path(@course), class: "btn btn-warning btn-lg pull-right active"%>
       </div>
 
     </div>
@@ -29,38 +46,49 @@
 
 
 <div class="container">
-    <div class="col-md-9">
-        <% if @reviews.blank? %>
-          <h3>No reviews yet. Be the first to write one!</h3>
-        <% else %>
-        <div class="container">
-          <h2 class="bar"><span style="text-align: center; font-size: 26px;">Recent Reviews</span></h2>
+    <% if @reviews.blank? %>
+      <h3>No reviews yet. Be the first to write one!</h3>
+    <% else %>
+      <h2 class="bar"><span style="text-align: center; font-size: 26px;">Recent Reviews</span></h2>
+      <% @reviews.each do |review| %>
+        <div style="background-color: white; margin: 20px 0 0 0; padding: 10px 25px;">
+          <div class="row">
+            <div class="col-md-8">
+              <h3><%= review.title %></h3>
+            </div>
+            <div class="col-md-4" style="text-align: right">
+              <h4 style="color: #f19c1c; padding-top: 15px;"><strong>Rating : <%= review.rating %> out of 10</strong></h4>
+            </div>
+          </div>
+          <h5 style="color:#6a8b99">Tutor(s): <%= review.tutor %></h5>
+          <div class="row" style="color: grey">
+            <div class="col-md-12 course-attrs">
+              <span><%= review.semester %></span>
+              <span><%= review.year.strftime "%Y" if review.year %></span>
+              <span><%= review.credit %></span>
+              <span><%= review.mandatory %></span>
+              <span><%= review.online %></span>
+              <span><a style="cursor:pointer" onclick="open_reading('<%= review.reading1 %>','<%= review.reading2 %>','<%= review.reading3 %>','<%= review.reading4 %>'); ">Reading Materials</a></span>
+            </div>
+          </div>
+          <hr>
+          <p style="font-size: 1.5em; line-height: 30px"><%= h(review.review).gsub(/\n/, '<br/>').html_safe %></p>
+          <hr>
+          <div class="row">
+            <div class="col-md-8">
+              <p style="color: gray">Posted by : <%= "#{review.user.first_name.capitalize} #{review.user.last_name.capitalize[0]}." %><br />
+              Created at : <%= review.created_at.strftime("%B %d, %Y") %></p>
+            </div>
+            <div class="col-md-4" style="text-align: right">
+              <% if user_signed_in? %>
+                <% if (review.user == current_user) %>
+                  <p><%= link_to "Edit", edit_course_review_path(@course, review) %> |
+                  <%= link_to "Delete", course_review_path(@course, review), method: :delete %></p>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
         </div>
-          <% @reviews.each do |review| %>
-            <div class="star-rating" data-score= <%= review.rating %> ></div>
-
-            <p><%= review.title %></p>
-            <p>Tutor(s): <%= review.tutor %></p>
-            <p><%= review.semester %><%= review.year %><%= review.credit %><%= review.mandatory %><%= review.online %></p>
-            <p><%#= review.review %></p>
-            <a href="<%= review.reading1 %>" onclick="window.open('<%= review.reading2 %>'); window.open('<%= review.reading3 %>'); window.open('<%= review.reading4 %>'); ">Click Here</a>
-            <p><%= h(review.review).gsub(/\n/, '<br/>').html_safe %></p>
-            <p>
-              Posted by : <%= "#{review.user.first_name.capitalize} #{review.user.last_name.capitalize[0]}." %>
-              Created at : <%= review.created_at.strftime("%B %d, %Y") %>
-            </p>
-          <% end %>
-        <% end %>
-    </div>
-
-
-    <script>
-    $('.star-rating').raty({
-      path: 'https://s3-us-west-1.amazonaws.com/ratemycourse/starss',
-      readOnly: true,
-      score: function() {
-        return $(this).attr('data-score');
-      }
-    });
-  </script>
+      <% end %>
+    <% end %>
 </div>

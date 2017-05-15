@@ -7,3 +7,28 @@
   padding: .2em;
   color: #fff
 }
+
+.course-attrs span {
+  margin-right: 25px;
+}
+
+.logo {
+  background-image: image-url("logo.png");
+  background-size: 250px 250px;
+  background-repeat: no-repeat;
+  background-position: -55px -85px;
+  height: 80px;
+  padding-left: 180px;
+}
+
+.homelink {
+  width: 150px;
+  height: 80px;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.navcontent {
+  padding-top: 10px;
+}

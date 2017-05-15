@@ -10,7 +10,7 @@ class Course < ApplicationRecord
     if @reviews.blank?
       0
     else
-      @reviews.average(:rating).round(2)
+      @reviews.average(:rating).round(1)
     end
   end
 end

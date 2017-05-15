@@ -16,14 +16,14 @@
 
     <div class="form-group">
       <%= f.label :email %>
-      <em>(CCSF email address is required)</em><br />
+      <em style="color : grey">(CCSF email address is required)</em><br />
       <%= f.email_field :email, autofocus: true, placeholder: "username@mail.ccsf.edu", class: "form-control" %>
     </div>
 
     <div class="form-group">
       <%= f.label :password %>
       <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <em style="color : grey">(<%= @minimum_password_length %> characters minimum)</em>
       <% end %><br />
       <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
     </div>

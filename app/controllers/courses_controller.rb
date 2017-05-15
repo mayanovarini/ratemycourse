@@ -1,12 +1,11 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
-
+  before_action :check_user, except: [:create, :new, :index, :show]
   # GET /courses
   # GET /courses.json
   def index
     @courses = Course.all
-    
   end
 
   # GET /courses/1
@@ -74,6 +73,12 @@ class CoursesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_course
       @course = Course.find(params[:id])
+    end
+
+    def check_user
+      unless (@course.user == current_user)
+        redirect_to root_url, alert: "Sorry, only the original course author can do that!"
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

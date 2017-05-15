@@ -1,24 +1,24 @@
 <div class="container">
-  <nav class="navbar navbar-default" role="navigation">
-    <div class="navbar-header">
-      <%= link_to "Rate My Course", root_path, class: "navbar-brand" %>
-    </div>
+  <nav class="navbar navbar-default logo" role="navigation">
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <form class="navbar-form navbar-left" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-      </form>
-      <ul class="nav navbar-nav navbar-right">
-        <% if user_signed_in? %>
-          <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
-          <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
-        <% else %>
-          <li><%= link_to "Log in", new_user_session_path %></li>
-          <li><%= link_to "Sign up", new_user_registration_path %></li>
-        <% end %>
-      </ul>
+      <a class="homelink" href="<%= root_path %>"></a>
+      <div class="navcontent">
+        <form class="navbar-form navbar-left" role="search">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search">
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+        <ul class="nav navbar-nav navbar-right">
+          <% if user_signed_in? %>
+            <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
+            <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+          <% else %>
+            <li><%= link_to "Log in", new_user_session_path %></li>
+            <li><%= link_to "Sign up", new_user_registration_path %></li>
+          <% end %>
+        </ul>
+      </div>
     </div><!-- /.navbar-collapse -->
   </nav>
 </div><!-- /.container -->

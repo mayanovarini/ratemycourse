@@ -2,7 +2,7 @@
   <div class ="jumbotron" style="padding-top: 80px;">
     <div class="row">
       <div class="col-xs-6">
-        <h1 style="font-size: 38px; margin: 0">I want to rate my course for</h1>
+        <h1 style="font-size: 36px; margin: 0">I want to rate my course for</h1>
       </div>
       <div class="col-xs-4" style="padding-top: 4px;">
         <input type="text" style="font-size: 18px;" class="form-control" placeholder="Department Name">
@@ -27,12 +27,12 @@
     <tr>
       <td><%= course.department %> Department</td>
     </tr>
-    <div class="star-rating" data-score= <%= course.avg_rating %> ></div>
-    
-        <tr><%= link_to 'Edit', edit_course_path(course) %></tr>
-        <tr><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></tr>
-        <tr>City College of San Francisco</tr>
-        #put rating here
+        <% if user_signed_in? && current_user %>
+          <tr><%= link_to 'Edit', edit_course_path(course) %></tr>
+          <tr><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></tr>
+          <tr>City College of San Francisco</tr>
+
+        <% end %>
 
       </td>
 
@@ -43,15 +43,7 @@
   <% end %>
 </table>
 
-<%= link_to 'New Course', new_course_path %>
+<% if user_signed_in? %>
+  <%= link_to 'New Course', new_course_path, class: "btn btn-link" %>
+<% end %>
 </div>
-
-<script>
-  $('.star-rating').raty({
-    path: 'https://s3-us-west-1.amazonaws.com/ratemycourse/stars',
-    readOnly: true,
-    score: function() {
-      return $(this).attr('data-score');
-    }
-  });
-</script>
