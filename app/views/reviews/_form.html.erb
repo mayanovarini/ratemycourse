@@ -15,9 +15,9 @@
 <div class="row">
   <div class="col-xs-6">
     <div class="form-group">
-      <p>When did you take the course? &nbsp;&nbsp;
+      <h5>When did you take the course? &nbsp;&nbsp;
       <%= form.select :semester, options_for_select([['Fall'], ['Summer'], ['Spring']]) %>
-      <%= form.date_select :year, :order => [:year], :start_year => 1935, :end_year => Time.now.year, :prompt => {:year => "Select year"} %></p>
+      <%= form.date_select :year, :order => [:year], :start_year => 1935, :end_year => Time.now.year, :prompt => {:year => "Select year"} %></h5>
     </div>
 
     <div class="form-group">
@@ -35,10 +35,10 @@
 
   <div class="col-xs-6">
     <div class="form-group">
-      <p>The course was&nbsp;&nbsp;
-      <%= form.select :credit, options_for_select([['Credit'], ['Non-Credit']]) %>
+      <h5>The course was&nbsp;&nbsp;
+      <%= form.select :credit, options_for_select([['Credited'], ['Non-Credit']]) %>
       <%= form.select :mandatory, options_for_select([['Mandatory'], ['Non-Mandatory']]) %>
-      <%= form.select :online, options_for_select([['In-Person'], ['Online']]) %></p>
+      <%= form.select :online, options_for_select([['In-Person'], ['Online']]) %></h5>
       <em style="color: gray">Credited, Mandatory Attendance and In-Person class are default</em>
 
     </div>

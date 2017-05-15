@@ -12,38 +12,76 @@
       </div>
     </div>
     <div style="text-align: center; margin-top: 60px;">
-      <button type="submit" class="btn btn-primary btn-lg">Search</button>
+      <button type="submit" class="btn btn-primary btn-lg">Search</button>&nbsp;&nbsp;&nbsp;
+      <% if user_signed_in? %>
+        <%= link_to 'Post Course', new_course_path, class: "btn btn-warning btn-lg" %>
+      <% end %>
     </div>
+
   </div>
 
-<table>
+  <h2 class="bar"><span style="text-align: center; font-size: 26px;">Recent Course</span></h2>
+
   <% @courses.each do |course| %>
-    <tr>
-      <td><%= link_to course.code, course %></td>
-    </tr>
-    <tr>
-      <td><%= link_to course.name, course %></td>
-    </tr>
-    <tr>
-      <td><%= course.department %> Department</td>
-    </tr>
-        <% if user_signed_in? && current_user %>
-          <tr><%= link_to 'Edit', edit_course_path(course) %></tr>
-          <tr><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></tr>
-          <tr>City College of San Francisco</tr>
-
-        <% end %>
-
-      </td>
-
-      <td>
-        #review here
-      </td>
-    </tr>
-  <% end %>
-</table>
-
-<% if user_signed_in? %>
-  <%= link_to 'New Course', new_course_path, class: "btn btn-link" %>
-<% end %>
+  <div style="margin-top: 25px; background: white; padding: 20px;">
+  <div class="row">
+    <div class="col-md-4">
+      <%= link_to course.code, course %>
+      <%= link_to course.name, course %>
+      <%= course.department %> Department
+      <% if user_signed_in? && current_user %>
+        <%= link_to 'Edit', edit_course_path(course) %>
+        <%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <h4>City College of San Francisco</h4>
+      <% end %>
+    </div>
+    <div class="col-md-8">
+      <% review = course.reviews.order('id DESC').limit(1).first %>
+      <% if review == nil %>
+        NO REVIEW
+      <% else %>
+        <div style="background-color: white; margin: 20px 0 0 0; padding: 0;">
+          <div class="row">
+            <div class="col-md-8">
+              <h3><%= review.title %></h3>
+            </div>
+            <div class="col-md-4" style="text-align: right">
+              <h4 style="color: #f19c1c; padding-top: 15px;"><strong>Rating : <%= review.rating %> out of 10</strong></h4>
+            </div>
+          </div>
+          <h5 style="color:#6a8b99">Tutor(s): <%= review.tutor %></h5>
+          <div class="row" style="color: grey">
+            <div class="col-md-12 course-attrs">
+              <span><%= review.semester %></span>
+              <span><%= review.year.strftime "%Y" if review.year %></span>
+              <span><%= review.credit %></span>
+              <span><%= review.mandatory %></span>
+              <span><%= review.online %></span>
+              <span><a style="cursor:pointer" onclick="open_reading('<%= review.reading1 %>','<%= review.reading2 %>','<%= review.reading3 %>','<%= review.reading4 %>'); ">Reading Materials</a></span>
+            </div>
+          </div>
+          <hr>
+          <p style="font-size: 1.5em; line-height: 30px"><%= h(review.review).gsub(/\n/, '<br/>').html_safe %></p>
+          <hr>
+          <div class="row">
+            <div class="col-md-8">
+              <p style="color: gray">Posted by : <%= "#{review.user.first_name.capitalize} #{review.user.last_name.capitalize[0]}." %><br />
+              Created at : <%= review.created_at.strftime("%B %d, %Y") %></p>
+            </div>
+            <div class="col-md-4" style="text-align: right">
+              <% if user_signed_in? %>
+                <% if (review.user == current_user) %>
+                  <p><%= link_to "Edit", edit_course_review_path(course, review) %> |
+                  <%= link_to "Delete", course_review_path(course, review), method: :delete %></p>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      </div>
+    </div>
+  </div>
+    <% end %>
+  </div>
 </div>

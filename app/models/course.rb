@@ -2,6 +2,8 @@ class Course < ApplicationRecord
   has_many :reviews
   belongs_to :users, optional: true
 
+  searchkick
+
   validates :code, :name, :department, presence: true
 
 

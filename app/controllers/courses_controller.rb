@@ -1,7 +1,16 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index, :show]
-  before_action :check_user, except: [:create, :new, :index, :show]
+  before_action :authenticate_user!, except: [:search, :index, :show]
+  before_action :check_user, except: [:search, :create, :new, :index, :show]
+
+  def search
+    if params[:search].present?
+      @courses = Course.search(params[:search])
+    else
+      @courses = Course.all
+    end
+  end
+
   # GET /courses
   # GET /courses.json
   def index
