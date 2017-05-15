@@ -1,22 +1,86 @@
 <div class="container">
   <h2 class="bar"><span style="text-align: center; font-size: 26px;">Search Result</span></h2>
+  <div style="margin-top: 25px; background: white; padding: 20px;">
   <% if @courses.length == 0 %>
     <div style="font-size: 1.5em;">
-      No results
-    </div>
-  <% end %>
-  <% @courses.each do |course| %>
-  <div style="margin-top: 25px; background: white; padding: 20px;">
-  <div class="row">
-    <div class="col-md-4">
-      <%= link_to course.code, course %>
-      <%= link_to course.name, course %>
-      <%= course.department %> Department
-      <% if user_signed_in? && current_user %>
-        <%= link_to 'Edit', edit_course_path(course) %>
-        <%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %>
-        <h4>City College of San Francisco</h4>
+      The course you are looking for has not been posted yet. Be the first one to
+      <% if user_signed_in? %>
+        <%= link_to 'post it', new_course_path, class: "btn btn-warning" %>
       <% end %>
     </div>
+  <% end %>
+
+  <% @courses.each do |course| %>
+  <div class="row">
+    <div class="col-md-4">
+      <h3 style="font-size: 2.5em; font-weight: bold;"><%= link_to course.code, course %>
+        <% if user_signed_in? && course.user == current_user %>
+          <span style="font-size: 15px; "><%= link_to 'Edit', edit_course_path(course) %></span>
+          <span style="font-size: 15px; "><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></span>
+        <% end %>
+      </h3>
+
+      <p style="color: grey; font-size: 1.2em">
+        <strong><%= link_to course.name, course %></strong>
+      </p>
+
+      <p style="font-size: 1.2em">
+        <%= course.department %> Department
+      </p>
+
+      <h3 style="color:#801714"><strong>City College of San Francisco</strong></h3>
+      <h4 style="color: #f1a82b">Average Rating : <%= course.avg_rating %> / 10 </h4>
+      <div style="margin-top: 30px">
+        <%= link_to "Rate This Course", new_course_review_path(course), class: "btn btn-success"%>
+      </div>
+    </div>
+
+    <div class="col-md-8">
+      <% review = course.reviews.order('id DESC').limit(1).first %>
+      <% if review == nil %>
+        <h3 style="color: gray">No review.<br /><br /> Be the first one to rate this course!</h3>
+      <% else %>
+        <div style="background-color: white">
+          <div class="row">
+            <div class="col-md-8">
+              <h3><%= review.title %></h3>
+            </div>
+            <div class="col-md-4" style="text-align: right">
+              <h4 style="color: #f19c1c; padding-top: 15px;"><strong>Rating : <%= review.rating %> out of 10</strong></h4>
+            </div>
+          </div>
+          <h5 style="color:#6a8b99">Tutor(s): <%= review.tutor %></h5>
+          <div class="row" style="color: grey">
+            <div class="col-md-12 course-attrs">
+              <span><%= review.semester %></span>
+              <span><%= review.year.strftime "%Y" if review.year %></span>
+              <span><%= review.credit %></span>
+              <span><%= review.mandatory %></span>
+              <span><%= review.online %></span>
+              <span><a style="cursor:pointer" onclick="open_reading('<%= review.reading1 %>','<%= review.reading2 %>','<%= review.reading3 %>','<%= review.reading4 %>'); ">Reading Materials</a></span>
+            </div>
+          </div>
+          <hr>
+          <p style="font-size: 1.5em; line-height: 30px"><%= h(review.review).gsub(/\n/, '<br/>').html_safe %></p>
+          <hr>
+          <div class="row">
+            <div class="col-md-8">
+              <p style="color: gray">Posted by : <%= "#{review.user.first_name.capitalize} #{review.user.last_name.capitalize[0]}." %><br />
+              Created at : <%= review.created_at.strftime("%B %d, %Y") %></p>
+            </div>
+            <div class="col-md-4" style="text-align: right">
+              <% if user_signed_in? %>
+                <% if (review.user == current_user) %>
+                  <p><%= link_to "Edit", edit_course_review_path(course, review) %> |
+                  <%= link_to "Delete", course_review_path(course, review), method: :delete %></p>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      </div>
+    </div>
+  </div>
   <% end %>
 </div>
