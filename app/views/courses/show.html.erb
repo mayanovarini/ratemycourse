@@ -45,7 +45,7 @@ function open_reading(url1, url2, url3, url4) {
 
 <div class="container">
     <% if @reviews.blank? %>
-      <h3>No reviews yet. Be the first to write one!</h3>
+      <h3 style="background-color: white; margin: 20px 0 0 0; padding: 20px 25px;">No reviews yet. Be the first to write one!</h3>
     <% else %>
       <h2 class="bar"><span style="text-align: center; font-size: 26px;">Recent Reviews</span></h2>
       <% @reviews.each do |review| %>

@@ -2,7 +2,7 @@
   <h2 class="bar"><span style="text-align: center; font-size: 26px;">Search Result</span></h2>
   <div style="padding: 0px;">
   <% if @courses.length == 0 %>
-    <div style="font-size: 1.5em;">
+    <div style="background-color: white; margin: 20px 0 0 0; padding: 20px 25px; font-size: 1.5em">
       The course you are looking for has not been posted yet. Be the first one to
       <% if user_signed_in? %>
         <%= link_to 'post it', new_course_path, class: "btn btn-warning" %>
