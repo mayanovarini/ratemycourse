@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.3.3'
+ruby '2.4.1'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -9,7 +9,7 @@ end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 4.1.0'
+gem 'rails', '~> 5.1.0'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', group: :development
 
@@ -68,24 +68,3 @@ gem 'erubis'
 gem 'jquery-rails'
 
 gem 'searchkick'
-
-gem 'activeadmin', github: 'activeadmin'
-
-gem 'inherited_resources', git: 'https://github.com/activeadmin/inherited_resources'
-
-# Plus integrations with:
-gem 'cancan' # or cancancan
-gem 'pundit'
-
-gem 'rspec-rails', '>= 3.5.0.beta1'
-gem 'ransack',    github: 'activerecord-hackery/ransack'
-gem 'kaminari',   github: 'amatsuda/kaminari', branch: '0-17-stable'
-gem 'formtastic', github: 'justinfrench/formtastic'
-gem 'draper',     github: 'audionerd/draper', branch: 'rails5', ref: 'e816e0e587'
-
-# To fix a Draper deprecation error
-gem 'activemodel-serializers-xml', github: 'rails/activemodel-serializers-xml'
-
-# Optional -- only if you already include these gems
-gem 'rack-mini-profiler',          github: 'MiniProfiler/rack-mini-profiler'
-gem 'database_cleaner',            github: 'pschambacher/database_cleaner', branch: 'rails5.0'
