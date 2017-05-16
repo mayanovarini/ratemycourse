@@ -59,16 +59,15 @@
           <div class="row">
             <div class="col-md-8">
               <h3><%= review.title %></h3>
+              <h5 style="color:#6a8b99">Tutor(s): <%= review.tutor %></h5>
             </div>
             <div class="col-md-4" style="text-align: right">
               <h4 style="color: #f19c1c; padding-top: 15px;"><strong>Rating : <%= review.rating %> out of 10</strong></h4>
             </div>
           </div>
-          <h5 style="color:#6a8b99">Tutor(s): <%= review.tutor %></h5>
           <div class="row" style="color: grey">
             <div class="col-md-12 course-attrs">
-              <span><%= review.semester %></span>
-              <span><%= review.year.strftime "%Y" if review.year %></span>
+              <span><%= review.semester %>&nbsp;&nbsp;<%= review.year.strftime "%Y" if review.year %></span>
               <span><%= review.credit %></span>
               <span><%= review.mandatory %></span>
               <span><%= review.online %></span>
