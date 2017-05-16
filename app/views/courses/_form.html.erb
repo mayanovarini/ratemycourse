@@ -2,7 +2,7 @@
   <div class="jumbotron">
     <div class="row">
       <div class="col-md-7">
-        <h2 style="font-weight: bold; color:#1d7312;"><%= edit ? "Edit" : "Post" %> a course</h2>
+        <h2 style="border-bottom: 1px solid gray; margin-top: 0; padding-bottom: 15px; font-weight: bold; color:#1d7312;"><%= edit ? "Edit" : "Post" %> a course</h2>
         <h3>From<span style="color:#801714"> City College of San Francisco</span></h3><br />
           <%= form_with(model: course, local: true) do |form| %>
             <% if course.errors.any? %>
@@ -29,13 +29,8 @@
               <%= form.text_field :department, id: :course_department, class: "form-control", :placeholder => "Department Name. Ex. Computer Science"%>
             </div><br />
           </div>
-          <div class="col-md-5">
-            <div class="form-group" style="position: absolute; bottom: 20px; right:20px;">
-              <%= form.submit class: "btn btn-lg btn-warning", value: "Post Course" %>
-              <%= link_to 'Back', courses_path(@course), class: "btn btn-lg btn-default" %>
-            </div>
-          <% end %>
 
+    <div class="col-md-5">
         <h2>Dos</h2>
           <h5>Make sure the course code is correct</h5>
           <h5>Make sure the course name is correct</h5>
@@ -44,7 +39,12 @@
         <h2>Don'ts</h2>
           <h5>Use profanity, name calling, derogatory terms</h5>
           <h5>Post a course you never took</h5>
-      </div>
+        </div>
     </div>
+    <div class="form-group">
+      <%= form.submit class: "btn btn-lg btn-warning", value: "Submit" %>
+      <%= link_to 'Back', courses_path(@course), class: "btn btn-lg btn-default" %>
+    </div>
+  <% end %>
   </div>
 </div>
