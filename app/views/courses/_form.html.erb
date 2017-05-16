@@ -2,7 +2,7 @@
   <div class="jumbotron">
     <div class="row">
       <div class="col-md-7">
-        <h2 style="font-weight: bold; color:#1d7312;">Post a course</h2>
+        <h2 style="font-weight: bold; color:#1d7312;"><%= edit ? "Edit" : "Post" %> a course</h2>
         <h3>From<span style="color:#801714"> City College of San Francisco</span></h3><br />
           <%= form_with(model: course, local: true) do |form| %>
             <% if course.errors.any? %>
