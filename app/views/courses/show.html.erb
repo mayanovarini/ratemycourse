@@ -62,8 +62,7 @@ function open_reading(url1, url2, url3, url4) {
           </div>
           <div class="row" style="color: grey">
             <div class="col-md-12 course-attrs">
-              <span><%= review.semester %></span>
-              <span><%= review.year.strftime "%Y" if review.year %></span>
+              <span><%= review.semester %>&nbsp;&nbsp;<%= review.year.strftime "%Y" if review.year %></span>
               <span><%= review.credit %></span>
               <span><%= review.mandatory %></span>
               <span><%= review.online %></span>
