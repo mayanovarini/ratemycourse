@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.4.1'
+ruby '2.3.4'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -12,7 +12,6 @@ end
 gem 'rails', '~> 5.1.0'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', group: :development
-
 # Use Postgres for Heroku
 gem 'pg', group: :production
 
@@ -68,3 +67,9 @@ gem 'erubis'
 gem 'jquery-rails'
 
 gem 'searchkick'
+
+gem 'inherited_resources', github: 'activeadmin/inherited_resources'
+gem 'activeadmin', '~> 1.0.0.pre4'
+gem 'cancan' # or cancancan
+gem 'draper'
+gem 'pundit'

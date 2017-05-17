@@ -1,0 +1,156 @@
+/* line 1, /Users/maya-novarini/Schools/CCSF/cs177/ratemycourse/app/assets/stylesheets/custom.css.scss */
+.bar {
+  display: block;
+  width: 100%;
+  text-align: center;
+  background: #0c6e93;
+  margin: 0;
+  padding: .2em;
+  color: #fff;
+}
+
+/* line 11, /Users/maya-novarini/Schools/CCSF/cs177/ratemycourse/app/assets/stylesheets/custom.css.scss */
+.course-attrs span {
+  margin-right: 25px;
+}
+
+/* line 15, /Users/maya-novarini/Schools/CCSF/cs177/ratemycourse/app/assets/stylesheets/custom.css.scss */
+.logo {
+  background-image: url(/assets/logo-cfc55792cf2c5f6dcbd3783ff92a033fc0509268e8c00554b49d12717faf2cc4.png);
+  background-size: 250px 250px;
+  background-repeat: no-repeat;
+  background-position: -55px -85px;
+  height: 80px;
+  padding-left: 180px;
+}
+
+/* line 24, /Users/maya-novarini/Schools/CCSF/cs177/ratemycourse/app/assets/stylesheets/custom.css.scss */
+.homelink {
+  width: 150px;
+  height: 80px;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* line 32, /Users/maya-novarini/Schools/CCSF/cs177/ratemycourse/app/assets/stylesheets/custom.css.scss */
+.navcontent {
+  padding-top: 10px;
+}
+/* line 1, /Users/maya-novarini/Schools/CCSF/cs177/ratemycourse/app/assets/stylesheets/scaffolds.scss */
+body {
+  background-color: #dfdfdf;
+  color: #333;
+  margin: 33px;
+  font-family: 'Chivo', sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+/* line 10, /Users/maya-novarini/Schools/CCSF/cs177/ratemycourse/app/assets/stylesheets/scaffolds.scss */
+p, ol, ul, td {
+  font-family: 'Chivo', sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+/* line 16, /Users/maya-novarini/Schools/CCSF/cs177/ratemycourse/app/assets/stylesheets/scaffolds.scss */
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+/* line 22, /Users/maya-novarini/Schools/CCSF/cs177/ratemycourse/app/assets/stylesheets/scaffolds.scss */
+a {
+  color: #0f598f;
+}
+/* line 25, /Users/maya-novarini/Schools/CCSF/cs177/ratemycourse/app/assets/stylesheets/scaffolds.scss */
+a:hover {
+  text-decoration: underline;
+}
+
+/* line 30, /Users/maya-novarini/Schools/CCSF/cs177/ratemycourse/app/assets/stylesheets/scaffolds.scss */
+th {
+  padding-bottom: 5px;
+}
+
+/* line 34, /Users/maya-novarini/Schools/CCSF/cs177/ratemycourse/app/assets/stylesheets/scaffolds.scss */
+td {
+  padding: 0 5px 7px;
+}
+
+/* line 39, /Users/maya-novarini/Schools/CCSF/cs177/ratemycourse/app/assets/stylesheets/scaffolds.scss */
+div.field, div.actions {
+  margin-bottom: 10px;
+}
+
+/* line 44, /Users/maya-novarini/Schools/CCSF/cs177/ratemycourse/app/assets/stylesheets/scaffolds.scss */
+#notice {
+  color: green;
+}
+
+/* line 48, /Users/maya-novarini/Schools/CCSF/cs177/ratemycourse/app/assets/stylesheets/scaffolds.scss */
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+/* line 54, /Users/maya-novarini/Schools/CCSF/cs177/ratemycourse/app/assets/stylesheets/scaffolds.scss */
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px 7px 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+/* line 61, /Users/maya-novarini/Schools/CCSF/cs177/ratemycourse/app/assets/stylesheets/scaffolds.scss */
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px -7px 0;
+  background-color: #c00;
+  color: #fff;
+  font-family: 'Chivo', sans-serif;
+}
+/* line 72, /Users/maya-novarini/Schools/CCSF/cs177/ratemycourse/app/assets/stylesheets/scaffolds.scss */
+#error_explanation ul li {
+  font-size: 12px;
+  list-style: square;
+  font-family: 'Chivo', sans-serif;
+}
+
+/* line 79, /Users/maya-novarini/Schools/CCSF/cs177/ratemycourse/app/assets/stylesheets/scaffolds.scss */
+h3 {
+  margin-top: 5px;
+}
+
+/* line 83, /Users/maya-novarini/Schools/CCSF/cs177/ratemycourse/app/assets/stylesheets/scaffolds.scss */
+label {
+  display: inline;
+  font-family: 'Chivo', sans-serif;
+}
+
+/* line 88, /Users/maya-novarini/Schools/CCSF/cs177/ratemycourse/app/assets/stylesheets/scaffolds.scss */
+select {
+  font-size: 1.2em;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+
+
+ */
+
