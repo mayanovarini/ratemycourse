@@ -18,15 +18,15 @@
             <% end %>
 
             <div class="form-group">
-              <%= form.text_field :code, id: :course_code, class: "form-control", :placeholder => "Course Code. Ex. CS177" %>
+              <%= form.text_field :code, id: :course_code, class: "form-control", :placeholder => "Course Code. Ex. CS177", :maxlength => 8 %>
             </div><br />
 
             <div class="form-group">
-              <%= form.text_field :name, id: :course_name, class: "form-control", :placeholder => "Course Name. Ex. Software Engineering"%>
+              <%= form.text_field :name, id: :course_name, class: "form-control", :placeholder => "Course Name. Ex. Software Engineering", :maxlength => 32 %>
             </div><br />
 
             <div class="form-group">
-              <%= form.text_field :department, id: :course_department, class: "form-control", :placeholder => "Department Name. Ex. Computer Science"%>
+              <%= form.text_field :department, id: :course_department, class: "form-control", :placeholder => "Department Name. Ex. Computer Science", :maxlength => 32 %>
             </div><br />
           </div>
 

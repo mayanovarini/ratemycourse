@@ -28,8 +28,8 @@
 
     <div class="form-group">
       <%= form.label :title %>
-      <em style="color : grey">( Please be informative and specific )</em>
-      <%= form.text_area :title, id: :review_title, class: "form-control" %>
+      <em style="color : grey">( Please be informative and specific. Max 40 characters. )</em>
+      <%= form.text_area :title, id: :review_title, class: "form-control", :maxlength => 40 %>
     </div>
   </div>
 
@@ -52,7 +52,8 @@
 
     <div class="form-group">
       <%= form.label :review %>
-      <%= form.text_area :review, id: :review_review, class: "form-control" %>
+      <em style="color : grey">( Please be honest and respectful. Max 350 characters. )</em>
+      <%= form.text_area :review, id: :review_review, class: "form-control", :maxlength => 350 %>
     </div>
 
     <div class="form-group">
