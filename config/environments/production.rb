@@ -90,5 +90,9 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # Required for Devise. Remember to change localhost:3000 to actual application host
-  config.action_mailer.default_url_options = { host: 'localhost:3000' }
+  config.action_mailer.default_url_options = { host: 'https://ratecourse.herokuapp.com/' }
+
+  # Precompile additional assets. Defaults to [application.js, application.css, non-JS/CSS]
+  config.assets.precompile += ['active_admin.css', 'active_admin/print.css', 'active_admin.js']
+
 end
