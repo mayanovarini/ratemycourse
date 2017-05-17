@@ -12,22 +12,33 @@ ActiveAdmin.register_page "Dashboard" do
 
     # Here is an example of a simple dashboard with columns and panels.
     #
-    # columns do
-    #   column do
-    #     panel "Recent Posts" do
-    #       ul do
-    #         Post.recent(5).map do |post|
-    #           li link_to(post.title, admin_post_path(post))
-    #         end
-    #       end
-    #     end
-    #   end
+    columns do
 
-    #   column do
-    #     panel "Info" do
-    #       para "Welcome to ActiveAdmin."
-    #     end
-    #   end
-    # end
+         column do
+           panel "Recent Courses" do
+             table_for Course.order('id desc').limit(10) do
+               column("Course Code")   {|co| link_to(co.code, admin_course_path(co)) }
+               column("Course Name")  {|co| co.name }
+               column("Department Name"){|co| co.department }
+               column("Course Poster")  {|co| co.user }
+
+             end
+           end
+         end
+    end # columns
+columns do
+    column do
+      panel "Recent Reviews" do
+        table_for Review.order('id desc').limit(10) do
+          column("Course Reviewed")   {|co| co.title }
+          column("Course Rating")  {|co| co.rating }
+          column("Review"){|co| link_to(co.review, admin_review_path(co.title, co)) }
+          column("Review Author")  {|co| co.user }
+
+        end
+      end
+    end
+end
+
   end # content
 end

@@ -73,3 +73,5 @@ gem 'activeadmin', '~> 1.0.0.pre4'
 gem 'cancan' # or cancancan
 gem 'draper'
 gem 'pundit'
+
+gem 'active_skin'
