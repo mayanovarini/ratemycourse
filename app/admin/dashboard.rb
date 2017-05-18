@@ -30,7 +30,7 @@ columns do
     column do
       panel "Recent Reviews" do
         table_for Review.order('id desc').limit(10) do
-          column("Course Reviewed")   {|co| co.title }
+          column("Review Title")   {|co| co.title }
           column("Course Rating")  {|co| co.rating }
           column("Review"){|co| link_to(co.review, admin_review_path(co.title, co)) }
           column("Review Author")  {|co| co.user }
